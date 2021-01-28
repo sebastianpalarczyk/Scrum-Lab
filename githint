@@ -1,0 +1,8 @@
+1. Commitujemy wszystkie nieskomitowane zmiany na lokalnym branchu (git status musi byc czysty)
+2. Przełączamy sie na brancha z ktorego chcemy dociagnac zmiany: git checkout develop
+3. Aktualizujemy brancha: git pull
+4. Przelaczamy sie z powrotem na naszego brancha: git checkout moj_branch
+5. Integrujemy zmiany ze zaktualizowanego przed momentem brancha: git merge develop
+6. Rozwiązujemy ewentualne konflikty i w ich przypadku robimy commita.
+7. Wypychamy zmergowane zmiany na naszym branchu: git push
+8. Jesli jestesmy happy ze zmianami, otwieramy nowego pull requesta
