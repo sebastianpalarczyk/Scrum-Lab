@@ -1,11 +1,11 @@
 package pl.coderslab.model;
 
-public class DetailsCurrentPlan {
+public class DetailsCurrentPlan extends Recipe{
 
-    String day_name;
-    String meal_name;
-    String recipe_name;
-    String recipe_description;
+    private String day_name;
+    private String meal_name;
+    private String recipe_name;
+    private String recipe_description;
 
     public DetailsCurrentPlan() {
 
@@ -51,5 +51,15 @@ public class DetailsCurrentPlan {
 
     public void setRecipe_description(String recipe_description) {
         this.recipe_description = recipe_description;
+    }
+
+    @Override
+    public String toString() {
+        return "DetailsCurrentPlan{" +
+                "day_name='" + day_name + '\'' +
+                ", meal_name='" + meal_name + '\'' +
+                ", recipe_name='" + recipe_name + '\'' +
+                ", recipe_description='" + recipe_description + '\'' +
+                '}';
     }
 }

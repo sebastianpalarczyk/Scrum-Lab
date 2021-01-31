@@ -70,76 +70,32 @@
                 <h2 class="dashboard-content-title">
                     <span>Ostatnio dodany plan:</span> <c:out value="${namePlan}" default="brak"/>
                 </h2>
+              <c:forEach items="${sessionScope.currentPlan}" var="element" varStatus="count">
                 <table class="table">
                     <thead>
                     <tr class="d-flex">
-                        <th class="col-2">Poniedzialek</th>
+                        <th class="col-2">
+                            <c:out value="${element.day_name}"/></th>
                         <th class="col-8"></th>
                         <th class="col-2"></th>
                     </tr>
                     </thead>
                     <tbody>
+
                     <tr class="d-flex">
                         <td class="col-2">
-                            <c:forEach items="${sessionScope.currentPlan}" var="element" end="0">
-                                <c:out value="${element.meal_name}"/>
-                            </c:forEach>
+                            <c:out value="${element.meal_name}"/>
                         </td>
-                        <td class="col-8"><c:forEach items="${sessionScope.currentPlan}" var="element" end="0">
+                        <td class="col-8">
                             <c:out value="${element.recipe_description}"/>
-                        </c:forEach></td>
-                        <td class="col-2"><button type="button" class="btn btn-primary rounded-0">Szczegóły</button></td>
-                    </tr>
-                    <tr class="d-flex">
-                        <td class="col-2"><c:forEach items="${sessionScope.currentPlan}" var="element" begin="1" end="1">
-                            <c:out value="${element.meal_name}"/>
-                        </c:forEach></td>
-                        <td class="col-8"><c:forEach items="${sessionScope.currentPlan}" var="element" begin="1" end="1">
-                            <c:out value="${element.recipe_description}"/>
-                        </c:forEach></td></td>
-                        <td class="col-2"><button type="button" class="btn btn-primary rounded-0">Szczegóły</button></td>
-                    </tr>
-                    <tr class="d-flex">
-                        <td class="col-2"></td>
-                        <td class="col-8"></td>
-                        <td class="col-2"><button type="button" class="btn btn-primary rounded-0">Szczegóły</button></td>
+                        </td>
+                        <td class="col-2"><a href="/appRecipeDetails?id=${element.id}" class="btn btn-primary rounded-0">Szczegóły</a>
+                        </td>
                     </tr>
                     </tbody>
+
                 </table>
-                <table class="table">
-                    <thead>
-                    <tr class="d-flex">
-                        <th class="col-2">Wtorek</th>
-                        <th class="col-8"></th>
-                        <th class="col-2"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="d-flex">
-                        <td class="col-2"><c:forEach items="${sessionScope.currentPlan}" var="element" begin="2" end="2">
-                            <c:out value="${element.meal_name}"/>
-                        </c:forEach></td>
-                        <td class="col-8"><c:forEach items="${sessionScope.currentPlan}" var="element" begin="2" end="2">
-                            <c:out value="${element.recipe_description}"/>
-                        </c:forEach></td>
-                        <td class="col-2"><button type="button" class="btn btn-primary rounded-0">Szczegóły</button></td>
-                    </tr>
-                    <tr class="d-flex">
-                        <td class="col-2"><c:forEach items="${sessionScope.currentPlan}" var="element" begin="3" end="3">
-                            <c:out value="${element.meal_name}"/>
-                        </c:forEach></td>
-                        <td class="col-8"><c:forEach items="${sessionScope.currentPlan}" var="element" begin="3" end="3">
-                            <c:out value="${element.recipe_description}"/>
-                        </c:forEach></td>
-                        <td class="col-2"><button type="button" class="btn btn-primary rounded-0">Szczegóły</button></td>
-                    </tr>
-                    <tr class="d-flex">
-                        <td class="col-2"></td>
-                        <td class="col-8"></td>
-                        <td class="col-2"><button type="button" class="btn btn-primary rounded-0">Szczegóły</button></td>
-                    </tr>
-                    </tbody>
-                </table>
+              </c:forEach>
             </div>
         </div>
     </div>

@@ -4,7 +4,6 @@ package pl.coderslab.web;
 import pl.coderslab.dao.*;
 import pl.coderslab.model.*;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,16 +18,13 @@ public class Dashboard extends HttpServlet {
 
     PlanDao planDao = new PlanDao();
     RecipeDao recipeDao = new RecipeDao();
-    AdminDao adminDao = new AdminDao();
     DetailsCurrentPlanDao detailsCurrentPlanDao = new DetailsCurrentPlanDao();
-    PlanIdDao planIdDao = new PlanIdDao();
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-        String admin = (String) session.getAttribute("email");
         String adminId = session.getAttribute("adminId").toString();
         int id = Integer.parseInt(adminId);
 
@@ -38,13 +34,13 @@ public class Dashboard extends HttpServlet {
         int planId = planDao.findLastId(id);
         List<DetailsCurrentPlan> currentPlan = detailsCurrentPlanDao.detailsPlan(planId);
         String namePlan = detailsCurrentPlanDao.namePlan(planId);
-
+        List<Recipe> recipes = recipeDao.findAllAdmin(id);
+        List<DetailsCurrentPlan> currentPlanList = addRecipeIdToCurrentPlan(currentPlan,recipes);
 
         session.setAttribute("plansNumber", plansNumber);
         session.setAttribute("recipesNumber", recipesNumber);
-        session.setAttribute("currentPlan", currentPlan);
+        session.setAttribute("currentPlan", currentPlanList);
         session.setAttribute("namePlan", namePlan);
-
 
         getServletContext().getRequestDispatcher("/dashboard.jsp")
                 .forward(request, response);
@@ -70,7 +66,19 @@ public class Dashboard extends HttpServlet {
             }
         }
         return number;
-
-
     }
+
+    public List<DetailsCurrentPlan> addRecipeIdToCurrentPlan(List<DetailsCurrentPlan> currentPlanList, List<Recipe> recipeList){
+        for(int i=0; i<currentPlanList.size(); i++){
+            for(int j=0; j<recipeList.size(); j++ ) {
+                if (currentPlanList.get(i).getRecipe_name().equals(recipeList.get(j).getName())) {
+                    currentPlanList.get(i).setId(recipeList.get(j).getId());
+                }
+            }
+        }
+        return currentPlanList;
+    }
+
 }
+
+
