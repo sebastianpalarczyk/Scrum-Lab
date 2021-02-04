@@ -1,5 +1,5 @@
-#Scrum Lab
- Web application was created for planning meals by users during the day. 
+# Scrum Lab
+> Web application was created for planning meals by users during the day. 
 
 ## Table of contents
 * [General info](#general-info)
