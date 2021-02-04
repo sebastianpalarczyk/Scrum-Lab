@@ -1,43 +1,23 @@
-<img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
+#Scrum Lab
+ Web application was created for planning meals by users during the day. 
 
-### Przygotowanie – pliki css/js. To jest zmiana Bartłomieja
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Status](#status)
+* [Inspiration](#inspiration)
 
-Pliki **css** możemy umieścić w katalogu 
-````src/main/webapp/css````
-przy powyższej lokalizacji w plikach szablonów załączamy je w następujący sposób:
-````
-  <link href='<c:url value="/css/style.css"/>' rel="stylesheet" type="text/css">
-```` 
-Jako przykład został dołączony servlet `HomeServlet` wskazujący home.jsp, dla którego wyświetla się poprawny szablon strony głównej.
+## General info
+The application acquires function of adding personal meal plans. What is more the user can add recipes to previously created meal plans. The user can also search through recepies of other users.
 
-### Dane do połączenia z bazą:
+## Technologies
+Project is created with: 
+* JSP
+* Tomcat
+* Servlets
 
-Plik znajduje się w naszym projekcie w katalogu **src/main/webapp/META-INF**.
+## Status
+Project is finished.
 
-`Zmodyfikuj znajdujące się w nim dane dotyczące połączenia.`
-
-### W przypadku wystąpienia błędu:
-````
-javax.naming.NameNotFoundException: Name [jdbc/scrumlab] is not bound in this Context. Unable to find [jdbc].
-````
-wykonujemy następujące kroki:
-
-Wybierz z górnego menu File –> Project Structure...
-
-W okienku, które się pojawi, kliknij z lewej strony w Facets następnie **Web**.
-
-Pojawi się okno, w którym kliknij **Add Application Server specific descriptor...**.
-
-![Screenshot](readme-img/context_03.png)
-
-Wybierz z listy serwer **Tomcat** i zaakceptuj przyciskiem **OK**.
-
-![Screenshot](readme-img/context_04.png)
-
-Na liście pojawi się plik **Tomcat Context Descriptor**. Potwierdź przyciskiem **OK**.
-
-![Screenshot](readme-img/context_05.png)
-
-Plik znajduje się w naszym projekcie w katalogu **src/main/webapp/META-INF**.
-
-`Zmodyfikuj znajdujące się w nim dane dotyczące połączenia.`
+## Inspiration
+The project was mainly created at Scrum courses and finished individually by participants.
